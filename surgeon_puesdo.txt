@@ -1,0 +1,79 @@
+Starting pseudocode - Item 3
+04/16/2024
+
+Note: Here is a starting idea on how to approach Item 3 of your project. But this is by no means the complete solution or the best solution.
+
+Step 1: 
+// Use the information about the previous surgeries to estimate the number of hours required by a team
+// to perform different kind of surgeries. For example, the average time predicts the amount of time
+// needed to complete a surgery of certain difficulty, but other estimation procedures can be used too. 
+
+for (each team t at hospital H) {
+       for (all surgeries performed by team t in the past) 
+       	compute the average time required by team t to complete a
+        	surgery of difficulty c;
+       
+       	// alternatively, instead of the average time to complete a
+       	// a certain kind of surgery, you could store the
+       // distributions of the execution times, and use the 
+       // distribution to predict the time of the next surgery
+       
+       // finally, the third alternative is to compute the averages
+       // over periods of time (e.g., over one year), and then used
+       // these averages to predict the time of a surgery
+}
+
+Step 2: 
+// Use the information about the difficulty of previous surgeries to estimate what are the more likely 
+// surgeries that might be needed while the power at the hospital is down. 
+
+for (all surgeries s at hospital H) {
+	N1 = count the number of surgeries for each difficulty type;
+	N2 = count the number of surgeries per hour; 
+} 
+
+N = all surgeries that were performed at hospital H; 
+
+for (all surgery types t) {
+	estimate the number of expected surgeries of type t per hour using
+	the formula N1 / N * N2; 
+}
+Step 3: 
+// Use the predictions in steps (1) and (2) to predict the amount of energy required by each team of
+// surgeons at each of the five hospitals. 
+
+for (each surgery type t) {
+	use the number of expected surgeries found in Step 2 to predict 
+	how many surgeries of this kind are expected to occur during
+	the estimated time the power is down; 
+}
+
+for (each team t of surgeons at hospital H) {
+	use the estimates at Step 1 to find the time it takes for the 
+	team to complete each surgery of type t assuming that the team
+	performs all surgeries by itself;
+	find the required energy assuming that the surgery equipment of
+       every team utilizes the same amount of energy; 
+}
+
+Step 4: 
+// Distribute the available capacity CAP of the hospital [CAP is due to the backup generators], so that a 
+// hospital's teams of surgeons can achieve the most outcome for the available capacity CAP. 
+
+while (CAP > 0) {
+	for (each hour of the estimated length of the power outage) {
+for (each surgery that is expected to occur, in the order of their expected number and complexity) {
+			find the team x that is available and is most effective
+       in handling that surgery type, such as the team that
+       has required least amount of time for that type of
+       surgeries;  
+       
+       assign team x to perform the surgery;
+       
+       CAP = CAP - energy expected to be used by team x;
+       
+       estimate the time moment when team x will finish the
+       assigned surgery;
+		}
+       }
+} 

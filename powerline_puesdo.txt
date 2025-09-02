@@ -1,0 +1,59 @@
+Starting pseudocode - Item 4
+04/16/2024
+
+Note: Here is a starting idea on how to approach Item 3 of your project. But this is by no means the complete solution or the best solution.
+
+Step 1: 
+
+// After a power outage occurs, a team assesses the damage and creates the ticket with the first row
+// indicating the nature of the damage, as shown in Figure 2.
+
+A new ticket is created for a new power outage at substation s; // data
+// is input for each item of the first line of a ticket
+
+Step 2: 
+// Then, the nature of the damage is used to assess the expected amount of repair time based on the
+// most similar previous damages from the station as well as the most similar damages from other
+// stations.
+
+Step 3: 
+// Next, it uses the number of serviced customers in Table II to estimate the total number of customer
+// hour interruptions for all the five substations, assuming that there are enough crews to repair all 
+// substations at the same time. 
+
+for EB
+On numbers of power-outrage, an estimated #number of customer will be interrupted for #hours. Given the historical 
+report:
+
+
+Step 4: 
+// However, the number of existing crews (TOT) is less than the required number. Find the dispatching 
+// scheme of the TOT crews, so that the total number of customer hours is minimized.
+
+while (there are unrepaired power outages) {
+       while (TOT > 0) {
+              check for power outrage, and update ticket
+		for (each unrepaired substation s in the decreasing order of their number of
+        customer hours) {
+       use previous tickets for the same kind of outage type to 
+       estimate the number N of crew that should be sent to repair 
+       the outage at substation s; 
+			assign N crews to repair the power outage;
+			TOT = TOT - N;
+			compute when the assigned crews are available again because they finished their
+        assigned job; 
+       }
+       }
+}
+ 
+
+Step 5: 
+// Extend the solution for Step 4 so that the total time hospitals are without energy is minimized too. 
+Extend the condition of the for loop (the condition is in bold and underlined) to also include the amount of time the related hospital is without power, considering that the hospital has its own local power capacity CAP. 
+
+Step 6: 
+// Extend the solution for Step 4 so that hospitals with more effective surgery teams are the least amount 
+// of time without power.
+
+Extend the condition of the for loop (the condition is in bold and underlined) to also include the amount of time the related hospital is without power, considering that the hospital has its own local power capacity CAP and also the characteristics of the surgeries that are likely to occur during the power outage and the power requirements of its surgery teams. 
+
