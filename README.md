@@ -3,5 +3,6 @@
 
 Download the zip file to test the program on the specific ticket program
 
-A complete summary report of the application is included that outlines the procedure and reason for the implementation, and the result expected.
+A complete summary report of the application is included, which outlines the logic and ideas behind the implementation for the expected result.
+
 
